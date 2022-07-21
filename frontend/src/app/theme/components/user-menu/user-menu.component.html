@@ -1,0 +1,36 @@
+<a mat-button [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger">
+    <mat-icon *ngIf="authService.isLoggedIn()" class="mat-icon-sm">person</mat-icon>
+    <mat-icon *ngIf="authService.isLoggedOut()" class="mat-icon-sm">person_outline</mat-icon>
+    <span fxShow="false" fxShow.gt-sm class="mx-1 uppercase">Account</span>
+</a>
+<mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-menu-panel user-menu">
+    <span (mouseleave)="userMenuTrigger.closeMenu()">
+        <ng-template [ngIf]="authService.isLoggedIn()">
+            <div fxLayout="row" fxLayoutAlign="start center" class="user-info">
+                <p class="m-0">{{ authService.username }}</p>
+            </div>
+            <div class="divider"></div>
+            <!-- <a mat-menu-item routerLink="/account/profile">
+                <mat-icon class="mat-icon-sm">settings</mat-icon>
+                <span>Settings</span>
+            </a> -->
+            <div class="divider"></div>
+            <button mat-menu-item (click)='authService.logout()'>
+                <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+                <span>Logout</span>
+            </button>
+        </ng-template>
+
+        <ng-template [ngIf]="authService.isLoggedOut()">
+            <a mat-menu-item routerLink="/login">
+                <mat-icon class="mat-icon-sm">login</mat-icon>
+                <span>Login</span>
+            </a>
+            <a mat-menu-item routerLink="/register">
+                <mat-icon class="mat-icon-sm">person_add</mat-icon>
+                <span>Register</span>
+            </a>
+
+        </ng-template>
+    </span>
+</mat-menu>

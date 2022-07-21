@@ -1,0 +1,68 @@
+<div class="landing-page-container">
+    <!-- Split the main section in two columns -->
+    <div class="above-fold">
+        <!-- Showing a nice picture on the right and the CTA and explanation on the left -->
+        <div class="oval-layout px-5" fxLayout="row wrap" fxLayoutAlign="center center">
+            <div [fxFlexOrder]="'2'" [fxFlexOrder.gt-sm]="'1'" fxFlex="100" fxFlex.gt-sm="40">
+                <h1 class="title">This is my awesome title</h1>
+                <p class="description">Lets explain here how we do what the title offers</p>
+                <div class="w-100" fxLayout="row" fxLayoutAlign="space-around center">
+                    <button routerLink="/register" class="mx-1" mat-raised-button color="accent">
+                        <span style="font-size: 20px;">
+                            Time for action
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div [fxFlexOrder]="'1'" [fxFlexOrder.gt-sm]="'2'" fxFlex="100" fxFlex.gt-sm="30" class="text-center"
+                class.gt-sm="ml-5">
+                <img class="main-image" src="/assets/images/svg/test.svg" />
+            </div>
+        </div>
+        <!-- ToDo add some social proof here -->
+    </div>
+    <div style="height: 500px; transform: translateY(150px) skewY(-11deg);" class="diagonal-layout">
+    </div>
+    <div class="below-fold">
+        <div class=" px-3">
+            <div class="theme-container" fxLayout="row wrap" fxLayoutAlign="space-around center">
+                <!-- Free card -->
+                <mat-card class="value-card" fxFlex="100" fxFlex.gt-sm="40">
+                    <h1 class="value-title">Value 1</h1>
+                    <div fxLayout="column" fxLayout.gt-xs="row">
+                        <img fxFlex="40" class="value-image" src="/assets/images/svg/test.svg" />
+                        <p fxFlex="60">The first value that we provide</p>
+                    </div>
+                </mat-card>
+                <!-- Free card -->
+                <mat-card class="value-card" fxFlex="100" fxFlex.gt-sm="40">
+                    <h1 class="value-title">Value 2</h1>
+                    <div fxLayout="column" fxLayout.gt-xs="row">
+                        <img fxFlex="40" class="value-image" src="/assets/images/svg/test.svg" />
+                        <p fxFlex="60">The second value that we provide</p>
+                    </div>
+                </mat-card>
+                <!-- Free card -->
+                <mat-card class="value-card" fxFlex="100" fxFlex.gt-sm="40">
+                    <h1 class="value-title">Value 3</h1>
+                    <div fxLayout="column" fxLayout.gt-xs="row">
+                        <img fxFlex="40" class="value-image" src="/assets/images/svg/test.svg" />
+                        <p fxFlex="60">The third value that we provide</p>
+                    </div>
+                </mat-card>
+                <!-- Free card -->
+                <mat-card class="value-card" fxFlex="100" fxFlex.gt-sm="40">
+                    <h1 class="value-title">Value 4</h1>
+                    <div fxLayout="column" fxLayout.gt-xs="row">
+                        <img fxFlex="40" class="value-image" src="/assets/images/svg/test.svg" />
+                        <p fxFlex="60">The fourth value that we provide</p>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+
+        <!-- Second call to action -->
+
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular Template</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Import stripe in index.html so that it can scan for suspicious behaviour -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+  <app-root></app-root>
+  <!-- This generates the spinner that is shown while the app is loading -->
+  <div class="spinner-wrapper" id="spinner">
+    <div class="spinner-container">
+      <!-- The icon itself -->
+      <div class="spinner-outer">
+        <div class="spinner">
+          <p class="spinner-text">Spinner Text</p>
+          <!-- Progress bar -->
+          <div id="spinner-progress" class="hide">
+            <div class="spinner-progress-outer">
+              <div id="spinner-progress-inner" class="spinner-progress-inner">
+              </div>
+            </div>
+            <div id="spinner-progress-text" class="spinner-progress-text">
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

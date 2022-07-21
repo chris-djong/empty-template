@@ -1,0 +1,18 @@
+<!-- Second toolbar generate in white for logo etc -->
+<mat-toolbar id="main-toolbar" class="mat-elevation-z2">
+  <div class="theme-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <!-- <a class="logo" routerLink="/" ><app-logo></app-logo></a> -->
+    <span fxHide="false" fxHide.gt-sm>
+      <!-- This enables the sidebar in the mobile view-->
+      <button mat-button (click)="sidenavToggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+    <div fxShow="false" fxShow.gt-sm class="horizontal-menu">
+      <app-horizontal-menu></app-horizontal-menu>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <app-user-menu></app-user-menu>
+    </div>
+  </div>
+</mat-toolbar>

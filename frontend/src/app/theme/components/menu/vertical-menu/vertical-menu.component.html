@@ -1,0 +1,6 @@
+<div *ngFor="let menu of menuItems" class="menu-item">
+    <a mat-button fxLayout="row" fxLayoutAlign="start center" [routerLink]="[menu.routerLink]"
+        routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" [id]="'menu-item-'+menu.title">
+        <span class="menu-title">{{ menu.title }}</span>
+    </a>
+</div>

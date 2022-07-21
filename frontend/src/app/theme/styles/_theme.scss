@@ -1,0 +1,347 @@
+@use '@angular/material' as mat;
+// Custom theming for angular material
+// For more information: https://material.angular.io/guide/theming
+@import "@angular/material/theming";
+@import "./_variables";
+
+// Include the core with our new font 
+@include mat.core();
+
+
+// Generate the palttes for our different colors
+$primary-colors: (
+    50 : #f2f6f0,
+    100 : #dee8da,
+    200 : #c9d9c2,
+    300 : #b3caa9,
+    400 : #a2be96,
+    500 : #92b384,
+    600 : #8aac7c,
+    700 : #7fa371,
+    800 : #759a67,
+    900 : #638b54,
+    A100 : #f4fff1,
+    A200 : #cfffbe,
+    A400 : #a9ff8b,
+    A700 : #96ff71,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$accent-colors: (
+    50 : #e3e3e8,
+    100 : #b9b8c5,
+    200 : #8b899f,
+    300 : #5c5979,
+    400 : #39365c,
+    500 : #16123f,
+    600 : #131039,
+    700 : #100d31,
+    800 : #0c0a29,
+    900 : #06051b,
+    A100 : #5a5aff,
+    A200 : #2727ff,
+    A400 : #0000f3,
+    A700 : #0000da,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$warn-colors: (
+    50 : #f9e0e0,
+    100 : #f0b3b3,
+    200 : #e68080,
+    300 : #db4d4d,
+    400 : #d42626,
+    500 : #cc0000,
+    600 : #c70000,
+    700 : #c00000,
+    800 : #b90000,
+    900 : #ad0000,
+    A100 : #ffd7d7,
+    A200 : #ffa4a4,
+    A400 : #ff7171,
+    A700 : #ff5858,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// The warn palette is optional
+// Defaults to red
+$primary-palette: mat-palette($primary-colors);
+$accent-palette: mat-palette($accent-colors);
+$warn-palette: mat-palette($warn-colors);
+
+// Create the theme object. A theme consists of configurations for individual 
+// theming systems such as "color" or "typography"
+$homie-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+
+// Include theme styles for core and each component used in your app
+@include angular-material-theme($homie-theme);
+
+// Next include the font 
+// Set the font of the mat theme 
+$custom-typography: mat.define-typography-config($font-family: 'Montserrat'
+    );
+$heading-font-family: 'Montserrat';
+$homie-typography: mat-typography-config($display-1: mat-typography-level(34pc, $font-family, $heading-font-family),
+        $display-2: mat-typography-level(45px, $font-family, $heading-font-family),
+        $display-3: mat-typography-level(56px, $font-family, $heading-font-family),
+        $display-4: mat-typography-level(112px, $font-family, $heading-font-family),
+        $headline: mat-typography-level(24px, $font-family, $heading-font-family),
+        $title: mat-typography-level(20px, $font-family, $heading-font-family),
+        $subheading-1: mat-typography-level(16px, $font-family, $heading-font-family),
+        $subheading-2: mat-typography-level(16px, $font-family, $heading-font-family),
+        $body-1: mat-typography-level(14px, $font-family, $heading-font-family),
+        $body-2: mat-typography-level(14px, $font-family, $heading-font-family),
+        $button: mat-typography-level(14px, $font-family, $heading-font-family),
+        $caption: mat-typography-level(12px, $font-family, $heading-font-family),
+    );
+@include angular-material-typography($homie-typography);
+
+
+
+// And finally set all of the theme classes
+$mat-primary: map-get($homie-theme, primary);
+$mat-accent: map-get($homie-theme, accent);
+$mat-warn: map-get($homie-theme, warn);
+$mat-background: map-get($homie-theme, background);
+$mat-foreground: map-get($homie-theme, foreground);
+
+.bg-primary {
+    background-color: mat.get-color-from-palette($mat-primary);
+    color: white;
+}
+
+.bg-secondary {
+    background-image: linear-gradient(to bottom right, $primary, $secondary);
+    color: white;
+}
+
+.bg-accent {
+    background-color: mat.get-color-from-palette($mat-accent);
+    color: white;
+}
+
+.bg-warn {
+    background-color: mat.get-color-from-palette($mat-warn);
+    color: white;
+}
+
+.text-muted {
+    color: mat.get-color-from-palette($mat-foreground, secondary-text) !important;
+}
+
+.primary-color {
+    color: mat.get-color-from-palette($mat-primary);
+}
+
+.secondary-color {
+    color: mat.get-color-from-palette($mat-primary, 100);
+}
+
+.v-divider {
+    background-color: mat.get-color-from-palette($mat-foreground, divider);
+}
+
+.divider {
+    border-top: 1px solid mat.get-color-from-palette($mat-foreground, divider);
+}
+
+.top-toolbar.mat-toolbar .v-divider {
+    background-color: mat.get-color-from-palette($mat-primary, lighter, 0.2);
+}
+
+.border-bottom-lighter {
+    border-bottom: 1px solid mat.get-color-from-palette($mat-primary, lighter, 0.2);
+}
+
+.border-lighter {
+    border-color: mat.get-color-from-palette($mat-primary, lighter, 0.2);
+}
+
+.border-primary {
+    border-color: mat.get-color-from-palette($mat-primary);
+}
+
+.border-accent {
+    border-color: mat.get-color-from-palette($mat-accent);
+}
+
+.top-toolbar {
+    background-color: mat.get-color-from-palette($mat-primary);
+    color: white;
+}
+
+
+header {
+    .logo svg {
+        fill: mat.get-color-from-palette($mat-primary);
+    }
+}
+
+.header-carousel .slide-info .mat-card {
+    background: rgba(mat.get-color-from-palette($mat-background, card), 0.85);
+
+    &:hover {
+        background: mat.get-color-from-palette($mat-background, card);
+    }
+}
+
+.user-menu .user-info {
+    color: mat.get-color-from-palette($mat-foreground, text);
+}
+
+main.content-offset-to-top {
+    .main-content-header {
+        border-top: 5px solid mat.get-color-from-palette($mat-primary);
+    }
+}
+
+.map-info-window {
+    .si-content-wrapper {
+        padding: 2px;
+        color: mat.get-color-from-palette($mat-primary);
+
+        .si-content {
+            max-width: 100% !important;
+            max-height: 100% !important;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .si-pointer-bg-top {
+        border-top-color: mat.get-color-from-palette($mat-primary);
+    }
+
+    .si-pointer-border-top {
+        border-top-color: mat.get-color-from-palette($mat-primary);
+    }
+
+    .si-close-button {
+        opacity: 1;
+        right: 4px;
+        top: 4px;
+        padding: 0 6px;
+        border-radius: 50%;
+        color: mat.get-color-from-palette($mat-primary);
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    &.si-has-border {
+        .si-content-wrapper {
+            border: 1px solid mat.get-color-from-palette($mat-foreground, divider);
+        }
+    }
+}
+
+.property-item .title a,
+.compare-item .title a {
+    color: mat.get-color-from-palette($mat-foreground, text);
+
+    &:hover {
+        color: mat.get-color-from-palette($mat-primary);
+    }
+}
+
+.features p:after,
+.compare-item .details .item {
+    border-bottom: 1px dotted mat.get-color-from-palette($mat-foreground, divider);
+}
+
+.small-carousel .swiper-slide.active-thumb img {
+    border-color: mat.get-color-from-palette($mat-primary);
+}
+
+
+.ps__thumb-y {
+    background-color: mat.get-color-from-palette($mat-primary, 900);
+}
+
+
+.active-link {
+    background-color: mat.get-color-from-palette($mat-primary);
+    color: #fff;
+}
+
+.horizontal-active-link {
+    background: mat.get-color-from-palette($mat-background, hover);
+    color: mat.get-color-from-palette($mat-primary);
+}
+
+.horizontal-sub-menu {
+
+    .mat-button,
+    .mat-menu-item {
+        color: mat.get-color-from-palette($mat-foreground, text);
+
+        &.horizontal-active-link {
+            color: mat.get-color-from-palette($mat-primary);
+        }
+    }
+}
+
+
+.section .section-title:after,
+.section.testimonials .swiper-pagination-bullet-active {
+    background-color: mat.get-color-from-palette($mat-primary);
+}
+
+
+.custom-table.mat-table .mat-header-row,
+.custom-table.mat-table .mat-row {
+    border-color: mat.get-color-from-palette($mat-foreground, divider);
+}
+
+.submit-property .step-section,
+.edit-property .step-section {
+    background: rgba(mat.get-color-from-palette($mat-background, background), 0.7);
+}
+
+.input-file-container .mat-orphan-label {
+    color: mat.get-color-from-palette($mat-foreground, text) !important;
+}

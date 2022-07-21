@@ -1,0 +1,20 @@
+<!-- The overlay so that the user is not able to click on anything else -->
+<div id="cookie-overlay" class="cookie-overlay">
+</div>
+<!-- The popup that show the information to accept-->
+<div id="cookie-popup" class="cookie-popup">
+  <h3>We value your privacy</h3>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <div fxFlex="100" fxFlex.gt-sm="80">
+      <p>We are not using any cookies to track or monitor your browsing behaviour. You only need to accept our <a
+          href="/terms-conditions">Terms and Conditions</a> and our <a href="/privacy-policy">Privacy Policy</a>.</p>
+      <p>Our external payment provider Stripe stores some cookies to allow us to detect malintended behaviour</p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="20" fxLayoutAlign="space-around center">
+      <button class="cookie-accept-button" mat-raised-button color="primary" (click)="acceptCookies()">Accept</button>
+    </div>
+  </div>
+</div>
+<div id="app" class="app">
+  <router-outlet></router-outlet>
+</div>a

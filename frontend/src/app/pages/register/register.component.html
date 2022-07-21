@@ -1,0 +1,81 @@
+<div class="p-3">
+  <div class="theme-container">
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="my-3">
+      <mat-card [style.max-width.px]="500">
+        <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
+          <h1 class="uppercase">Register</h1>
+          <a mat-button routerLink="/login" color="primary" class="w-100">Already have an account? Sign in!</a>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)">
+          <mat-form-field appearance="outline" class="w-100 mt-2">
+            <mat-icon matPrefix class="mr-1 text-muted">person</mat-icon>
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username" required>
+            <mat-error *ngIf="registerForm.controls.username.errors?.required">Username is required</mat-error>
+            <mat-error *ngIf="registerForm.controls.username.hasError('minlength')">Username has a minimum length of 3
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.username.hasError('exists')">This username is unfortunately not
+              available anymore</mat-error>
+
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <mat-icon matPrefix class="mr-1 text-muted">email</mat-icon>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="registerForm.controls.email.errors?.required">Email is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.email.hasError('invalidEmail')">This email is invalid</mat-error>
+            <mat-error *ngIf="registerForm.controls.email.hasError('exists')">Looks like you are part of our community
+              already. Please login to proceed.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <mat-icon matPrefix clgooglass="mr-1 text-muted">lock</mat-icon>
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" formControlName="password" type="password" minlength="6" required
+              [type]="hide ? 'password' : 'text'">
+            <mat-error *ngIf="registerForm.controls.password.errors?.required">Password is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">Password has a minimum length of 7
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.password.hasError('pattern')">Password requires at least 1
+              uppercase, 1 lowercase and 1 number
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" type="button" class="text-muted">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <mat-icon matPrefix class="mr-1 text-muted">lock</mat-icon>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required
+              [type]="hide ? 'password' : 'text'">
+            <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">Confirm password is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('mismatchedPasswords')">Passwords do not
+              match</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" type="button" class="text-muted">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-slide-toggle formControlName="sub_newsletter" class="my-2">Subscribe to our newsletter
+          </mat-slide-toggle>
+          <div class="text-center mt-2">
+            <button mat-raised-button color="primary" class="uppercase" type="submit">
+              Create an account
+            </button>
+          </div>
+        </form>
+        <div class="divider mt-4"></div>
+        <mat-card-actions fxLayoutAlign="center center" class="text-center">
+          <small class="my-3">By clicking the 'Create an Account' button you agree with our<a mat-button color="primary"
+              routerLink="/terms-conditions" style="padding: 0px; margin: 0px;">Terms and Conditions</a>
+            and our <a style="padding: 0px; margin: 0px;" mat-button color="primary"
+              routerLink="/privacy-policy">Privacy Policy</a> </small>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

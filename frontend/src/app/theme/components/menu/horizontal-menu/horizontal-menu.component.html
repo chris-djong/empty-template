@@ -1,0 +1,8 @@
+<ng-container *ngFor="let menuItem of menuItems">
+
+  <a mat-button [routerLink]="[menuItem.routerLink]" routerLinkActive="horizontal-active-link"
+    [routerLinkActiveOptions]="{exact:true}">
+    <span>{{ menuItem.title }}</span>
+  </a>
+
+</ng-container>
