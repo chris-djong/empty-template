@@ -112,17 +112,17 @@ $warn-palette: mat-palette($warn-colors);
 
 // Create the theme object. A theme consists of configurations for individual 
 // theming systems such as "color" or "typography"
-$homie-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+$my-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
 
 // Include theme styles for core and each component used in your app
-@include angular-material-theme($homie-theme);
+@include angular-material-theme($my-theme);
 
 // Next include the font 
 // Set the font of the mat theme 
 $custom-typography: mat.define-typography-config($font-family: 'Montserrat'
     );
 $heading-font-family: 'Montserrat';
-$homie-typography: mat-typography-config($display-1: mat-typography-level(34pc, $font-family, $heading-font-family),
+$my-typography: mat-typography-config($display-1: mat-typography-level(34pc, $font-family, $heading-font-family),
         $display-2: mat-typography-level(45px, $font-family, $heading-font-family),
         $display-3: mat-typography-level(56px, $font-family, $heading-font-family),
         $display-4: mat-typography-level(112px, $font-family, $heading-font-family),
@@ -135,16 +135,16 @@ $homie-typography: mat-typography-config($display-1: mat-typography-level(34pc, 
         $button: mat-typography-level(14px, $font-family, $heading-font-family),
         $caption: mat-typography-level(12px, $font-family, $heading-font-family),
     );
-@include angular-material-typography($homie-typography);
+@include angular-material-typography($my-typography);
 
 
 
 // And finally set all of the theme classes
-$mat-primary: map-get($homie-theme, primary);
-$mat-accent: map-get($homie-theme, accent);
-$mat-warn: map-get($homie-theme, warn);
-$mat-background: map-get($homie-theme, background);
-$mat-foreground: map-get($homie-theme, foreground);
+$mat-primary: map-get($my-theme, primary);
+$mat-accent: map-get($my-theme, accent);
+$mat-warn: map-get($my-theme, warn);
+$mat-background: map-get($my-theme, background);
+$mat-foreground: map-get($my-theme, foreground);
 
 .bg-primary {
     background-color: mat.get-color-from-palette($mat-primary);

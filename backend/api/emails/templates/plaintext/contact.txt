@@ -1,0 +1,6 @@
+New received message
+
+Name: {{name}}
+Email: {{email}}
+Phone: {{phone}}
+Message: {{message}}

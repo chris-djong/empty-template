@@ -1,0 +1,15 @@
+Hello {{ username }}, 
+
+We are pleased to have you as one of our first customers and hope that we can provide you with the most pleasant real estate experience.
+
+Feel free to reach out to us for any question or problems that you encounter. We will try our best to help you out.
+
+We just need you to verify your email using the following link:
+
+    {{ verificationLink }}
+          
+After that you are free to either upload your first property or try one of our new features
+
+We look forward to hearing more from you!
+Chris.
+    
