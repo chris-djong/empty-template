@@ -7,14 +7,13 @@ from .serializers import SubscriptionSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from rest_framework.response import Response
-from ..properties.models import Property
-from ..users.models import User, Agent
+from ..users.models import User
 import datetime
 from .models import Subscription, StripeSubscription
-from ..properties.functions import get_free_property_statuses
 import stripe
 import datetime
 from ..stripe.functions import create_customer
+import os 
 
 stripe.api_key = os.environ['STRIPE_KEY']
 
@@ -52,8 +51,6 @@ class MySubscriptionView(APIView):
         response['expiryDate'] = stripe_subscription.expiryDate
         # In case we have the free subscription we overwrite the expiry date
         if (subscription.name == 'Free'):
-            # In case the user has used the free trial alreadz we dont allow it to use it again
-            if (user.agent.has_used_trial):
             response['expiryDate'] = datetime.datetime.today() + \
                 datetime.timedelta(days=10)
             response['status'] = 'active'
@@ -136,20 +133,18 @@ class StripeCheckoutView(APIView):
                 # For metered billing, do not pass quantity
                 'quantity': 1
             }],
-            """ ToDo: fields that can be useful for production later on: 
-                "billing_address_collection": 
-                "automatic_tax": {
-                    "enabled": true
-                }
-                "tax_id_collection": {
-                    "enabled": true
-                }
-                "customer_update": {
-                    "address": "auto",
-                    "name": "auto"
-                }
-                
-            """
+            # ToDo: fields that can be useful for production later on: 
+            #    "billing_address_collection": 
+            #    "automatic_tax": {
+            #        "enabled": true
+            #    }
+            #    "tax_id_collection": {
+            #        "enabled": true
+            #    }
+            #    "customer_update": {
+            #        "address": "auto",
+            #        "name": "auto"
+            #    }                
             customer=request.user.stripe_customer_id
         )
         status_code = status.HTTP_200_OK

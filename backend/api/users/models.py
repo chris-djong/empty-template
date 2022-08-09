@@ -88,7 +88,7 @@ class User(AbstractBaseUser):
 
     # Tell django to use email as login
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['username']
 
     # Tells Django that the UserManager class defined above should manage
     # objects of this type.

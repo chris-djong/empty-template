@@ -68,6 +68,8 @@ export class RegisterComponent implements OnInit {
             }
           }
         });
+      } else {
+        console.log(this.registerForm)
       }
     }
   }

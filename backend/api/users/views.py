@@ -6,8 +6,8 @@ from rest_framework.generics import CreateAPIView
 from django.contrib.auth.hashers import check_password
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import UserRegistrationSerializer, UserLoginSerializer, LanguageSerializer
-from .models import User, Agent, Client, Language
+from .serializers import UserRegistrationSerializer, UserLoginSerializer
+from .models import User
 from django.contrib.auth.tokens import default_token_generator, PasswordResetTokenGenerator
 from django.contrib.auth import authenticate
 from ..emails.functions import send_mail
@@ -20,7 +20,7 @@ import glob
 
 
 """
-    Post request to register a new user
+    Post request toregister a new user
     The request generate a verification link and sends it to the user
 """
 
@@ -279,7 +279,6 @@ class UserProfileView(APIView):
         response['username'] = user.username
         response['email'] = user.email
         response['sub_newsletter'] = user.sub_newsletter
-            user.languages, many=True).data
 
         status_code = status.HTTP_200_OK
         return Response(response, status=status_code)

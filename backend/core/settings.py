@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ['*']  # whenever DEBUG is set to false the django website does 
 # Whiteliste domains for API
 # during developmment enable all for localhost
 CORS_ORIGIN_ALLOW_ALL = True  # only allow whitelisted connections
-CORS_ALLOWED_ORIGINS = ['<addWebsiteHere>']
+CORS_ALLOWED_ORIGINS = ['your_website.domain.lu']
 
 # Application definition
 
@@ -50,10 +50,8 @@ INSTALLED_APPS = [
     'corsheaders',  # enable cross origin resource sharing
     'rest_framework',
     'api.users',
-    'api.chat',
     'api.emails',
-    'api.stripe',
-    'api.settings'
+    'api.stripe'
 ]
 
 
@@ -104,7 +102,7 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.backends.postgresql',
         'NAME': 'addDateBaseNameHere',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASSWORD'],

@@ -18,16 +18,7 @@ from django.urls import path
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^', include('api.properties.urls')),
-    url(r'^', include('api.propertyMonitor.urls')),
-    url(r'^', include('api.documents.urls')),
-    url(r'^', include('api.locations.urls')),
     url(r'^', include('api.users.urls')),    
-    url(r'^', include('api.scheduler.urls')),
-    url(r'^', include('api.chat.urls')),
     url(r'^', include('api.emails.urls')),
-    url(r'^', include('api.stripe.urls')),
-    url(r'^', include('api.questions.urls')),
-    url(r'^', include('api.locationData.urls')),
-    url(r'^', include('api.settings.urls'))
+    url(r'^', include('api.stripe.urls'))
 ]

@@ -2,7 +2,6 @@ import stripe
 from .models import Subscription, StripeSubscription
 import datetime
 from ..users.models import User
-from ..properties.functions import disable_excessive_properties
 import os
 
 stripe.api_key = os.environ['STRIPE_KEY']
@@ -85,7 +84,5 @@ def update_subscription_from_webhook(data):
 
     # And save the final stripe subscription object on our end so that the user gets access
     stripe_subscription.save()
-
-    disable_excessive_properties(user)
 
     return

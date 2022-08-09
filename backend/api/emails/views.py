@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework import status
 from rest_framework.response import Response
-from ..users.models import User, Client, Agent
+from ..users.models import User
 from .models import NewsletterMail
 from .serializers import NewsLetterMailSerializer
 from django.contrib.auth.tokens import default_token_generator
