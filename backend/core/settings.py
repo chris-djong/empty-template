@@ -53,8 +53,6 @@ INSTALLED_APPS = [
     'api.chat',
     'api.emails',
     'api.stripe',
-    'api.locationData',
-    'api.propertyMonitor',
     'api.settings'
 ]
 
